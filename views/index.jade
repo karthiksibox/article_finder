@@ -1,0 +1,16 @@
+extends layout
+
+block content
+  h1= title
+  p Welcome to #{title}
+  section.search_section
+    paper-input(label='search an article')#search
+    div#results
+  section.input_section
+    p Create an Aricle Suggestion
+    paper-input( multiline, floatinglabel, label='Suggestion Desc.')#desc
+    textarea(name="data", placeholder="Query")#sql
+    div#DIV_1(onclick="save_query()")  Create
+
+
+block edit

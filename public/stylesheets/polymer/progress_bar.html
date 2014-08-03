@@ -1,0 +1,80 @@
+<polymer-element name="progress-bar" attributes="value, border, progressColor, barColor">
+
+    <template>
+        <style>
+
+            @host{
+                progress-bar{
+                    display: block;
+                }
+            }
+
+            .ui-progress{
+                background: {{progressColor}};
+                position: relative;
+                height: 20px;
+                border-radius: {{border}};
+                margin-right: 40px;
+            }
+
+            .progress_value{
+                position: absolute;
+                left: 100%;
+                padding-left: 10px;
+            }
+
+            .progress_width{
+                background: {{barColor}};
+                border-radius: {{border}};
+                width: 10%;
+                height: 100%;
+                position: absolute;
+                left: 0;
+                top: 0;
+                transition: width 0.2s cubic-bezier(0,.5,.5,1);
+            }
+
+        </style>
+
+        <div class="ui-progress">
+            <span class="progress_width" style="width: {{value}}"></span>
+            <span class="progress_value">{{value}}</span>
+        </div>
+    </template>
+
+    <script>
+
+        var progressPrototype = HTMLElement.prototype;
+
+        /**
+         * Set the value         
+         */
+        progressPrototype.set = function(value){
+
+            this.setAttribute('value', value)
+
+        }
+
+        /**
+         * Get the value         
+         */
+        
+        progressPrototype.get = function(){
+
+            return this.getAttribute('value')
+        }
+
+        Polymer('progress-bar', {
+            border        : '10px',
+            value         : '20%',
+            progressColor : '#eee',
+            barColor      : '#000',
+            
+            /**
+             * Set the prototype             
+             */
+            prototype: progressPrototype
+        });
+    </script>
+
+</polymer-element>

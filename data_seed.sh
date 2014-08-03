@@ -1,0 +1,2 @@
+curl -XPOST "http://127.0.0.1:3000/update" -d "desc=Article with no Similars&query=select article_id desired_column from active_hierarchy.merchandise where article_id not in (select distinct(article_id) from article_config.similar_articles) and article_id not in (select distinct(similar_article_id) from article_config.similar_articles) limit 10;"
+curl -XPOST "http://127.0.0.1:3000/update?desc=asd" -d "desc=Inactive Stores&query=SELECT id desired_column from master.stores where active ='f' limit 10;"
