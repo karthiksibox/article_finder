@@ -65,3 +65,17 @@ function display_suggestions(data,parameters) {
 $( "#search" ).keyup(get_suggestions);
 
 
+function change_connection(){
+  parameters={}
+  parameters['env']=document.getElementById('env').value;
+  var env_changed=function(resp){
+    $('.current_env').text(resp);
+  };
+  $.ajax({
+    type: "POST",
+    url: '/change_env',
+    data: parameters,
+    success: env_changed,
+  });
+}
+

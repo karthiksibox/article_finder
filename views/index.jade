@@ -3,14 +3,25 @@ extends layout
 block content
   h1= title
   p Welcome to #{title}
-  section.search_section
-    paper-input(label='search an article')#search
-    div#results
-  section.input_section
-    p Create an Aricle Suggestion
-    paper-input( multiline, floatinglabel, label='Suggestion Desc.')#desc
-    textarea(name="data", placeholder="Query")#sql
-    div#DIV_1(onclick="save_query()")  Create
+  div
+    section.search_section
+      paper-input(label='search an article')#search
+      div#results
+    section.input_section
+      p Create an Aricle Suggestion
+      paper-input( multiline, floatinglabel, label='Suggestion Desc.')#desc
+      textarea(name="data", placeholder="Query")#sql
+      div.submit(onclick="save_query()")  Create
+    section.connection_details
+      p Chose Connection Details
+      select#env
+        -var repeation = [ 'QA', 'showcase']
+        -for item in repeation
+          option(value=item) #{item}
+      div.submit(onclick="change_connection()") Change Connection
+ 
+      p Current Connection
+        div.current_env
 
 
 block edit

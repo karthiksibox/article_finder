@@ -7,7 +7,11 @@ a {
   color: #00B7FF;
 }
 
-
+div.vertical-line{
+  border-left:1px;
+  solid #000;
+  height:100%;
+}
 .results{height:auto;
 min-height:30px;
 height:auto !important;        /* for IE as it does not support min-height */height:30px;
@@ -23,13 +27,13 @@ border-style: solid;
 
 
 .search_section{
-  display: inline-table;
+  width: 30%;
 }
 
 
 .input_section{
-  display: inline-block;
-  margin-left:  320px;
+  margin-left:  50%;
+  margin-top: initial;
 }
 
 #sql{
@@ -52,7 +56,7 @@ border-style: solid;
     transition: border 0.2s linear 0s, box-shadow 0.2s linear 0s;
 }/*#TEXTAREA_1*/
 
-#DIV_1 {
+.submit {
     color: rgb(255, 255, 255);
     cursor: default;
     display: inline-block;

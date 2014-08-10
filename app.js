@@ -30,8 +30,8 @@ router.get('/suggestions',route.suggestions);
 router.get('/search',route.search);
 router.post('/update',route.update);
 router.post('/save_suggestion',route.save_suggestion);
+router.post('/change_env',route.change_env);
 
-router.get('/edit',route.edit)
 app.use('/',router)
 
 
