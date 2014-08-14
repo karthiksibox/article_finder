@@ -18,6 +18,24 @@ function save_query(){
 }
 
 
+function run_query(){
+  parameters={}
+  parameters['query']=$("#sql")[0].value;
+  var query_saved=function(resp){
+    set_json_list_for_table(resp);
+    buildHtmlTable();
+  } 
+  $.ajax({
+    type: "POST",
+    url: '/run_query',
+    data: parameters,
+    success: query_saved,
+    dataType: 'json'
+  });
+}
+
+
+
 
 function get_suggestions() {
   $('#results').show();
@@ -41,12 +59,14 @@ function display_results(data,suggestion){
     result.text('No Results Found.');
     result.addClass('result');}
   $(".suggestion[name='"+suggestion.toLowerCase()+"']").append(result);
-  data.forEach(function(sug){
-    var result=$('<div></div>');
-    result.text(sug.desired_column);
-    result.addClass('result');
-    $(".suggestion[name='"+suggestion.toLowerCase()+"']").append(result);
-  });
+  set_json_list_for_table(data);
+  buildHtmlTable();
+  //data.forEach(function(sug){
+    //var result=$('<div></div>');
+    //result.text(sug.desired_column);
+    //result.addClass('result');
+    //$(".suggestion[name='"+suggestion.toLowerCase()+"']").append(result);
+  //});
 }
 
 

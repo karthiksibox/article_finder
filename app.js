@@ -29,6 +29,7 @@ router.get('/',route.index);
 router.get('/suggestions',route.suggestions);
 router.get('/search',route.search);
 router.post('/update',route.update);
+router.post('/run_query',route.run_query);
 router.post('/save_suggestion',route.save_suggestion);
 router.post('/change_env',route.change_env);
 

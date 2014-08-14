@@ -38,8 +38,15 @@ function get_suggestions(res){
   });
 };
 
+function query_pg_and_send_res(req,res,query){
+  pg_db['db'].raw(query).then(function(resp){ 
+    res.send(resp.rows);
+  });
+}
 
-
+exports.run_query = function(req,res){
+  query_pg_and_send_res(req,res,req.body['query']);
+}
 
 exports.search =function(req, res){
   console.log(req.query.query+"so");
@@ -53,9 +60,7 @@ exports.search =function(req, res){
 
     doc.forEach(function(a){
       console.log('Querying Postgres: '+ a.query);
-      pg_db['db'].raw(a.query).then(function(a){ 
-        res.send(a.rows);
-      });
+      query_pg_and_send_res(req,res,a.query);
     });
   });
 };
@@ -71,7 +76,7 @@ exports.save_suggestion=function(req,res){
 
 
 exports.change_env=function(req,res){
-  pg_db.change_connection('127.0.0.1',5432,'postgres','postgres','merchandise_platform_template');
-res.send(req.body);
+  pg_db.change_connection('172.16.20.210',5435,'admin','Helpdesk','merchandise_platform_qa');
+  res.send(req.body);
 }
 
