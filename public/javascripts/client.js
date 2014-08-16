@@ -99,3 +99,4 @@ function change_connection(){
   });
 }
 
+$(document).ready(get_suggestions);

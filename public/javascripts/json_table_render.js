@@ -5,6 +5,7 @@ function set_json_list_for_table(json){
 
 // Builds the HTML Table out of myList json data from Ivy restful service.
  function buildHtmlTable() {
+   $("#excelDataTable").empty();
      var columns = addAllColumnHeaders(myList);
  
      for (var i = 0 ; i < myList.length ; i++) {

@@ -2,17 +2,17 @@ extends layout
 
 block content
   h1= title
-  p Welcome to #{title}
   div
-    section.search_section
-      paper-input(label='search an article')#search
-      div#results
+    section.search_section 
+      u Suggestions
+      //-paper-input(label='search an article')#search
+      div#results 
     section.input_section
       p Create an Aricle Suggestion
       paper-input( multiline, floatinglabel, label='Suggestion Desc.')#desc
       textarea(name="data", placeholder="Query")#sql
       div.submit(onclick="save_query()")  Create
-      div.submit(onclick="run_query()")  run_query
+      div.submit(onclick="run_query()")  Save.
       table#excelDataTable(border="1")
     section.connection_details
       p Chose Connection Details
