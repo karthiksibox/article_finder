@@ -1,5 +1,4 @@
-var Knex  = require('knex');
-Knex.knex = Knex.initialize({
+var knex =  require('knex')({
   client: 'pg',
   connection: {
     host      : process.env.TARGET || '127.0.0.1',
@@ -9,13 +8,10 @@ Knex.knex = Knex.initialize({
   database : process.env.TARGET_DB || 'merchandise_platform_test',
   }
 });
-
-knex = require('knex').knex;
-/* a=knex('quotes').select().then(function(a){console.log(a)}); */
 module.exports= {
   db: knex,
   change_connection: function(host,port,user,password,database){
-    Knex.knex = Knex.initialize({
+   var knex =  require('knex')({
       client: 'pg',
     connection: {
     host      : host,
@@ -25,7 +21,7 @@ module.exports= {
     database : database,
     }
     });
-    knex = require('knex').knex;
+    //knex = require('knex').knex;
     pg_db.db=knex;
   }
 };

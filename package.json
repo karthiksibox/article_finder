@@ -20,7 +20,9 @@
         "knex" : "0.5",
 "socket.io" : "*",
         "pg-query": "*",
-          "async": "*"
+          "async": "*",
+          "debug": "*",
+          "nodemon": "*"
   },
  "devDependencies": {
  "nodemon" : "*",

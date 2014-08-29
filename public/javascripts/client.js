@@ -4,6 +4,7 @@ function save_query(){
   parameters={}
   parameters['desc']=$("#desc")[0].value;
   parameters['query']=$("#sql")[0].value;
+  parameters['db']=document.getElementById('env').value;
   var query_saved=function(){
     $("#sql")[0].value='';
     $("#desc")[0].value='';

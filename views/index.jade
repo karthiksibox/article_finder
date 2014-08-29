@@ -4,20 +4,21 @@ block content
   h1= title
   div
     section.search_section 
-      u Suggestions
+      Suggestions
       //-paper-input(label='search an article')#search
       div#results 
-    section.input_section
-      p Create an Aricle Suggestion
-      paper-input( multiline, floatinglabel, label='Suggestion Desc.')#desc
-      textarea(name="data", placeholder="Query")#sql
-      div.submit(onclick="save_query()")  Create
-      div.submit(onclick="run_query()")  Save.
-      table#excelDataTable(border="1")
+      section.query_response
+        table#excelDataTable(border="1")
+      section.input_section
+        p Create an Aricle Suggestion
+        paper-input( multiline, floatinglabel, label='Suggestion Desc.')#desc
+        textarea(name="data", placeholder="Query")#sql
+        div.submit(onclick="save_query()") Save.
+        div.submit(onclick="run_query()")  Query.
     section.connection_details
       p Chose Connection Details
       select#env
-        -var environments = [ 'QA', 'showcase']
+        -var environments = [ 'merchandise_platform_qa', 'store_assortment_qa', 'user_authorization_qa']
         -for item in environments
           option(value=item) #{item}
       div.submit(onclick="change_connection()") Change Connection
