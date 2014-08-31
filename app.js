@@ -13,9 +13,10 @@ pg_db = require('./db');
 var app = express();
 var router=express.Router();
 var route=require('./routes/');
+config=require('./configs')
 app.set('views', path.join(__dirname, 'views'));
-
-db = monk('localhost:27017/articles');
+mongo_suggestions = monk('localhost:27017/'+config.mongo_suggestions_collection);
+mongo_connections = monk('localhost:27017/'+config.mongo_connections_collection);
 app.set('view engine', 'jade');
 
 app.use(favicon());
@@ -32,6 +33,9 @@ router.post('/update',route.update);
 router.post('/run_query',route.run_query);
 router.post('/save_suggestion',route.save_suggestion);
 router.post('/change_env',route.change_env);
+router.get('/get_unique_dbs',route.get_unique_dbs);
+router.post('/save_connection',route.save_connection);
+router.get('/get_connection',route.get_connection);
 
 app.use('/',router)
 

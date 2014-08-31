@@ -30,7 +30,9 @@ border-style: solid;
   width: 30%;
 }
 
-
+display_block{
+  display: block;
+}
 .input_section{
 }
 
@@ -54,26 +56,21 @@ border-style: solid;
     transition: border 0.2s linear 0s, box-shadow 0.2s linear 0s;
 }/*#TEXTAREA_1*/
 
-.submit {
+.button {
     color: rgb(255, 255, 255);
-    cursor: default;
+    cursor: pointer;
     display: inline-block;
     height: 27px;
     min-width: 54px;
     position: relative;
     text-align: center;
-    text-decoration: none solid rgb(255, 255, 255);
-    vertical-align: middle;
     white-space: nowrap;
-    width: 54px;
-    perspective-origin: 36px 14.5px;
     transform-origin: 36px 14.5px;
     background: rgb(77, 144, 254) -webkit-linear-gradient(top, rgb(77, 144, 254), rgb(71, 135, 237)) repeat scroll 0% 0% / auto padding-box border-box;
     border: 1px solid rgb(48, 121, 237);
     border-radius: 2px 2px 2px 2px;
     font: normal normal bold 11px/27px arial, sans-serif;
     margin: 6px 2px;
-    outline: rgb(255, 255, 255) none 0px;
     padding: 0px 8px;
 }/*#DIV_1*/
 

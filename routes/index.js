@@ -8,13 +8,13 @@ exports.index = function(req, res){
 var update=function(req, res){
   var response=[];
   var post_body=req.body;
-  collection=db.get('articles');
-
+  var collection=mongo_suggestions.get(config.mongo_suggestions_collection);
   var promise = collection.insert({'desc': post_body['desc'], 'query': post_body['query'],'db': post_body['db'] });
-  promise.on('success', function(doc){console.log(doc)});
+  promise.on('complete' , function(doc){
+    res.send(response);
+  });
 
 
-  res.send(response);
 };
 
 exports.update =update;
@@ -26,12 +26,11 @@ exports.suggestions =function(req, res){
 
 
 function get_suggestions(res){
-  var collection=db.get('articles');
+  var collection=mongo_suggestions.get(config.mongo_suggestions_collection);
   var promise = collection.find();
   promise.on('success', function(doc){
     var response=[]
     doc.forEach(function(a){
-      console.log(a.desc);
       response.push(a);
     });
   res.send(response);
@@ -62,7 +61,7 @@ exports.run_query = function(req,res){
 
 exports.search =function(req, res){
   console.log(req.query.query+"so");
-  collection=db.get('articles');
+  var collection=db.get('articles');
   var promise = collection.find({'desc': req.query.query});
   console.log('Query key'+ req.query.query);
   promise.on('success', function(doc){
@@ -95,3 +94,42 @@ exports.change_env=function(req,res){
   res.send(req.body);
 }
 
+exports.get_unique_dbs=function(req,res){
+  var collection=db.get('articles');
+  debugger;
+  var promise = collection.distinct('env');
+  promise.on('success', function(doc){
+    console.log(doc)
+    var response=[]
+    doc.forEach(function(a){
+      console.log(a.env);
+      response.push(a);
+    });
+  res.send(response);
+  });
+}
+
+exports.save_connection=function(req,res){
+  var post_body=req.body;
+  var collection=mongo_connections.get(config.mongo_connections_collection);
+  debugger;
+  var promise = collection.insert({ 'host': post_body['host'], port: post_body['port'],user: post_body['user'],password: post_body['pwd'],db:post_body['db']});
+  promise.on('complete', function(doc){
+    res.send(200);
+
+  });
+
+}
+
+exports.get_connection=function(req,res){
+  var post_body=req.body;
+  var collection=mongo_connections.get(config.mongo_connections_collection);
+  var promise = collection.find();
+  promise.on('success', function(doc){
+    var response=[]
+    doc.forEach(function(a){
+      response.push(a);
+    });
+  res.send(response);
+  });
+}

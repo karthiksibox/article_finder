@@ -13,17 +13,23 @@ block content
         p Create an Aricle Suggestion
         paper-input( multiline, floatinglabel, label='Suggestion Desc.')#desc
         textarea(name="data", placeholder="Query")#sql
-        div.submit(onclick="save_query()") Save.
-        div.submit(onclick="run_query()")  Query.
+        div.button(onclick="save_query()") Save.
+        div.button(onclick="run_query()")  Query.
     section.connection_details
       p Chose Connection Details
-      select#env
-        -var environments = [ 'merchandise_platform_qa', 'store_assortment_qa', 'user_authorization_qa']
-        -for item in environments
-          option(value=item) #{item}
-      div.submit(onclick="change_connection()") Change Connection
-      p Current Connection
-        div.current_env
+      select#environments
+        //--var environments = [ 'merchandise_platform_qa', 'store_assortment_qa', 'user_authorization_qa']
+        //--for item in environments
+          //-option(value=item) #{item}
+      div.button(onclick="change_connection()") Change Connection
+      div.button(onclick="create_connection()") New Connection..
 
+      div.modal
+      paper-dialog(heading="Postgres Connection Setting",transition="paper-dialog-transition-center")
+        paper-input(floatinglabel, label='Host', style='display: block;')#host
+        paper-input(floatinglabel, label='Port',style='display: block;')#port
+        paper-input(floatinglabel, label='Username',style='display: block;')#user
+        paper-input(floatinglabel, label='Password',style='display: block;')#pwd
+        paper-input(floatinglabel, label='Database',style='display: block;')#db
+        div.button(onclick="save_db()") Save.
 
-block edit

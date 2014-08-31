@@ -63,10 +63,10 @@ function display_results(data,suggestion){
   set_json_list_for_table(data);
   buildHtmlTable();
   //data.forEach(function(sug){
-    //var result=$('<div></div>');
-    //result.text(sug.desired_column);
-    //result.addClass('result');
-    //$(".suggestion[name='"+suggestion.toLowerCase()+"']").append(result);
+  //var result=$('<div></div>');
+  //result.text(sug.desired_column);
+  //result.addClass('result');
+  //$(".suggestion[name='"+suggestion.toLowerCase()+"']").append(result);
   //});
 }
 
@@ -87,7 +87,7 @@ $( "#search" ).keyup(get_suggestions);
 
 
 function change_connection(){
-  parameters={}
+  var parameters={}
   parameters['env']=document.getElementById('env').value;
   var env_changed=function(resp){
     $('.current_env').text(resp);
@@ -99,5 +99,51 @@ function change_connection(){
     success: env_changed,
   });
 }
+function create_connection(){
+  var dialog = document.querySelector('paper-dialog');
+  dialog.toggle();
+}
 
+function show_env(){
+  var x = document.getElementById("environments");
+  var list_dbs= function(data){
+    data.forEach(function(d){
+      var option = document.createElement("option");
+      option.text = d.db;
+      x.add(option);
+    })
+  }
+  $.ajax({
+    type: "GET",
+    url: '/get_connection',
+    data: parameters,
+    success: list_dbs,
+  });
+}
+
+
+function save_db(){
+  var parameters={ 'host': document.getElementById('host').value,
+    port: document.getElementById('port').value,
+    user: document.getElementById('user').value,
+    pwd: document.getElementById('pwd').value,
+    db: document.getElementById('db').value
+  };
+
+  var env_added=function(resp){
+    var dialog = document.querySelector('paper-dialog');
+    dialog.toggle();
+
+    show_env();
+  };
+  $.ajax({
+    type: "POST",
+    url: '/save_connection',
+    data: parameters,
+    success: env_added,
+  });
+}
 $(document).ready(get_suggestions);
+$(document).ready(show_env);
+
+
