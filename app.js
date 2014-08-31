@@ -7,7 +7,6 @@ var bodyParser = require('body-parser');
 var mongo = require('mongodb');
 var monk = require('monk');
 
-pg_db = require('./db');
 
 //pg_db=require('./db');
 var app = express();
@@ -33,7 +32,6 @@ router.post('/update',route.update);
 router.post('/run_query',route.run_query);
 router.post('/save_suggestion',route.save_suggestion);
 router.post('/change_env',route.change_env);
-router.get('/get_unique_dbs',route.get_unique_dbs);
 router.post('/save_connection',route.save_connection);
 router.get('/get_connection',route.get_connection);
 
@@ -69,5 +67,5 @@ app.use(function(err, req, res, next) {
         error: {}
     });
 });
-
+route.change_pg_db(process.env.DEFAULTDB);
 module.exports = app;

@@ -4,7 +4,7 @@ function save_query(){
   parameters={}
   parameters['desc']=$("#desc")[0].value;
   parameters['query']=$("#sql")[0].value;
-  parameters['db']=document.getElementById('env').value;
+  parameters['db']=document.getElementById('environments').value;
   var query_saved=function(){
     $("#sql")[0].value='';
     $("#desc")[0].value='';
@@ -22,6 +22,7 @@ function save_query(){
 function run_query(){
   parameters={}
   parameters['query']=$("#sql")[0].value;
+  parameters['db']=$("#environments").value;
   var query_saved=function(resp){
     set_json_list_for_table(resp);
     buildHtmlTable();
@@ -62,12 +63,6 @@ function display_results(data,suggestion){
   $(".suggestion[name='"+suggestion.toLowerCase()+"']").append(result);
   set_json_list_for_table(data);
   buildHtmlTable();
-  //data.forEach(function(sug){
-  //var result=$('<div></div>');
-  //result.text(sug.desired_column);
-  //result.addClass('result');
-  //$(".suggestion[name='"+suggestion.toLowerCase()+"']").append(result);
-  //});
 }
 
 
@@ -75,7 +70,7 @@ function display_suggestions(data,parameters) {
   result_box=document.getElementById('results');
   result_box.innerText='';
   data.forEach(function(search_suggestion){
-    var suggestion=$("<div name='"+search_suggestion.desc.toLowerCase()+"'></div>");
+    var suggestion=$("<div name='"+search_suggestion.desc+"'></div>");
     suggestion.text(search_suggestion.desc);
     suggestion.addClass('suggestion');
     $('#results').append(suggestion);
@@ -88,7 +83,7 @@ $( "#search" ).keyup(get_suggestions);
 
 function change_connection(){
   var parameters={}
-  parameters['env']=document.getElementById('env').value;
+  parameters['env']=document.getElementById('environments').value;
   var env_changed=function(resp){
     $('.current_env').text(resp);
   };
