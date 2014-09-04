@@ -48,19 +48,20 @@ var change_pg_db=function change_pg_db(db){
   var promise=collection.find({db: db});
   promise.on('success',function(doc){
     doc=doc[0];
-
-   var knex =  require('knex')({
+    if(doc){
+    var knex =  require('knex')({
       client: 'pg',
-    connection: {
-    host      : doc.host,
-    port : doc.port, 
-    user     : doc.user,// your connection config
-    password : doc.pwd,
-    database : doc.db,
-    }
+        connection: {
+          host      : doc.host,
+        port : doc.port, 
+        user     : doc.user,// your connection config
+        password : doc.pwd,
+        database : doc.db,
+        }
     });
-  pg_db=knex;
-   
+    }
+    pg_db=knex;
+
   });
 };
 exports.change_pg_db=change_pg_db;

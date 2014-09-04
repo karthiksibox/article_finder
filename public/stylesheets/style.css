@@ -19,7 +19,12 @@ height:30px;
 clear: both;
 border-style: solid;
 }
-
+/*#excelDataTable{*/
+  /*height: 100px;*/
+  /*width: 100px;*/
+  /*overflow-y: scroll;*/
+  /*overflow-x: scroll;*/
+/*}*/
 .result{
   margin-left: 10%;
   color: seagreen;
