@@ -36,8 +36,8 @@ function get_suggestions(res){
   res.send(response);
   });
 };
-
 function query_pg_and_send_res(req,res,query){
+  debugger;
   pg_db.raw(query).then(function(resp){ 
     res.send(resp.rows);
   });
@@ -48,7 +48,9 @@ var change_pg_db=function change_pg_db(db){
   var promise=collection.find({db: db});
   promise.on('success',function(doc){
     doc=doc[0];
+    debugger;
     if(doc){
+
     var knex =  require('knex')({
       client: 'pg',
         connection: {
@@ -102,7 +104,7 @@ exports.change_env=function(req,res){
 exports.save_connection=function(req,res){
   var post_body=req.body;
   var collection=mongo_connections.get(config.mongo_connections_collection);
-  var promise = collection.insert({ 'host': post_body['host'], port: post_body['port'],user: post_body['user'],password: post_body['pwd'],db:post_body['db']});
+  var promise = collection.insert({ 'host': post_body['host'], port: post_body['port'],user: post_body['user'], pwd: post_body['pwd'],db:post_body['db']});
   promise.on('complete', function(doc){
     res.send(200);
 
