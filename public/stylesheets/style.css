@@ -12,6 +12,10 @@ div.vertical-line{
   solid #000;
   height:100%;
 }
+
+.suggestion{
+    cursor: pointer;
+}
 .results{height:auto;
 min-height:30px;
 height:auto !important;        /* for IE as it does not support min-height */height:30px;
