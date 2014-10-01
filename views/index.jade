@@ -1,14 +1,14 @@
 extends layout
 
 block content
-  h1= title
+  h3= title
+  hr
   div
     section.search_section 
-      Suggestions
       //-paper-input(label='search an article')#search
-      div#results 
+      div#results.right_panel
       section.query_response
-        table#excelDataTable(border="1")
+        table#excelDataTable(border="1").tableSection
       section.input_section
         p Create a Suggestion
         paper-input( multiline, floatinglabel, label='Suggestion Desc.')#desc
