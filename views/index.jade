@@ -13,8 +13,9 @@ block content
         p Create a Suggestion
         paper-input( multiline, floatinglabel, label='Suggestion Desc.')#desc
         textarea(name="data", placeholder="Query")#sql
-        div.button(onclick="save_query()") Save.
         div.button(onclick="run_query()")  Query.
+       
+        div.button(onclick="save_query()") Save.
     section.connection_details
       p Chose Connection Details
       select#environments

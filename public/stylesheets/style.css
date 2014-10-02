@@ -81,10 +81,16 @@ display_block{
   text-align: center;
   white-space: nowrap;
   transform-origin: 36px 14.5px;
-  background: rgb(77, 144, 254) -webkit-linear-gradient(top, rgb(77, 144, 254), rgb(71, 135, 237)) repeat scroll 0% 0% / auto padding-box border-box;
+
+      background: -webkit-linear-gradient(top, rgb(77, 144, 254), rgb(71, 135, 237)); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(top, rgb(77, 144, 254), rgb(71, 135, 237)); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(top, rgb(77, 144, 254), rgb(71, 135, 237)); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(top, rgb(77, 144, 254), rgb(71, 135, 237)); /* Standard syntax (must be last) */
+
+
   border: 1px solid rgb(48, 121, 237);
   border-radius: 2px 2px 2px 2px;
-  font: normal normal bold 11px/27px arial, sans-serif;
+  font: normal normal bold 11px/27px arial;
   margin: 6px 2px;
   padding: 0px 8px;
 }/*#DIV_1*/
