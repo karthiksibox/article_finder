@@ -43,7 +43,6 @@ function get_suggestions() {
   $('#results').show();
   parameters=$('#search').value;
   $.get( '/suggestions',parameters, function(data){display_suggestions(data,parameters)});
-
   //var animation = new CoreAnimation();
   //animation.duration = 500;
   //animation.keyframes = [

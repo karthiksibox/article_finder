@@ -3,4 +3,6 @@ data
 odata
 *.DS_Store
 *.swp
-*.log
+*.log 
+public/stylesheets/bower_components/
+
