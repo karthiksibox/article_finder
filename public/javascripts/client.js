@@ -43,6 +43,17 @@ function get_suggestions() {
   $('#results').show();
   parameters=$('#search').value;
   $.get( '/suggestions',parameters, function(data){display_suggestions(data,parameters)});
+
+  //var animation = new CoreAnimation();
+  //animation.duration = 500;
+  //animation.keyframes = [
+  //{opacity: 1},
+  //{opacity: 0}
+  //];
+  //animation.target = document.getElementById('results');
+  //animation.play();
+
+
 }
 function bind_click_on_suggestions(){
   var suggestions=document.getElementsByClassName("suggestion");
@@ -140,5 +151,6 @@ function save_db(){
 }
 $(document).ready(get_suggestions);
 $(document).ready(show_env);
+
 
 

@@ -3,4 +3,4 @@ data
 odata
 *.DS_Store
 *.swp
-
+*.log

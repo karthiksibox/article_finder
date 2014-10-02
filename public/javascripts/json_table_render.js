@@ -17,6 +17,7 @@ function set_json_list_for_table(json){
  
              row$.append($('<td/>').html(cellValue));
          }
+         $("#excelDataTable").height('150px');
          $("#excelDataTable").append(row$);
      }
  }
