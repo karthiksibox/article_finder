@@ -18,4 +18,4 @@ Getting Started
 9. Enter Connection Details and Click on "Save."
 10. To Run a query against the DB, Type in the query in Query text box and click on "Query".
 11. To save this Type in a Suggestion Description and Click on Save.
-12. You will Start seeing this in your suggestions Sectino
+12. You will Start seeing this in your suggestions Section.
