@@ -1,7 +1,7 @@
 /* GET home page. */
 exports.index = function(req, res){
   var self = this;
-  res.render("index",{title: "Suggestions"})
+  res.render("index",{title: "Desql"})
 };
 
 //suggestion is saved by this function
@@ -17,7 +17,6 @@ var update=function(req, res){
 
 };
 
-exports.update =update;
 
 
 exports.suggestions =function(req, res){
@@ -37,9 +36,11 @@ function get_suggestions(res){
   });
 };
 function query_pg_and_send_res(req,res,query){
-  debugger;
   pg_db.raw(query).then(function(resp){ 
-    res.send(resp.rows);
+    var result={};
+    result['rows']=resp.rows;
+    result['query']=query;
+    res.send(result);
   });
 }
 
@@ -48,7 +49,6 @@ var change_pg_db=function change_pg_db(db){
   var promise=collection.find({db: db});
   promise.on('success',function(doc){
     doc=doc[0];
-    debugger;
     if(doc){
 
     var knex =  require('knex')({
@@ -124,3 +124,7 @@ exports.get_connection=function(req,res){
   res.send(response);
   });
 }
+
+
+exports.update =update;
+

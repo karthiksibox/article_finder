@@ -24,7 +24,7 @@ function run_query(){
   parameters['query']=$("#sql")[0].value;
   parameters['db']=$("#environments").value;
   var query_saved=function(resp){
-    set_json_list_for_table(resp);
+    set_json_list_for_table(resp['rows']);
     buildHtmlTable();
   } 
   $.ajax({
@@ -43,15 +43,6 @@ function get_suggestions() {
   $('#results').show();
   parameters=$('#search').value;
   $.get( '/suggestions',parameters, function(data){display_suggestions(data,parameters)});
-  //var animation = new CoreAnimation();
-  //animation.duration = 500;
-  //animation.keyframes = [
-  //{opacity: 1},
-  //{opacity: 0}
-  //];
-  //animation.target = document.getElementById('results');
-  //animation.play();
-
 
 }
 function bind_click_on_suggestions(){
@@ -71,8 +62,9 @@ function display_results(data,suggestion){
     result.text('No Results Found.');
     result.addClass('result');}
   $(".suggestion[name='"+suggestion.toLowerCase()+"']").append(result);
-  set_json_list_for_table(data);
+  set_json_list_for_table(data['rows']);
   buildHtmlTable();
+  document.getElementById('sql').value=data['query'];
 }
 
 
